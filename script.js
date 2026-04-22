@@ -9,14 +9,34 @@ class PhotoWall {
 
   setImages(imageUrls = []) {
     this.imageUrls = Array.isArray(imageUrls)
-      ? imageUrls.filter((url) => typeof url === "string" && url.trim())
+      ? imageUrls.filter((url) => this.isSafeImageUrl(url))
       : [];
     this.render();
   }
 
+  isSafeImageUrl(url) {
+    if (typeof url !== "string" || !url.trim()) {
+      return false;
+    }
+
+    if (url.startsWith("data:image/")) {
+      return true;
+    }
+
+    try {
+      const parsed = new URL(url, window.location.href);
+      return parsed.protocol === "http:" || parsed.protocol === "https:";
+    } catch {
+      return false;
+    }
+  }
+
   render() {
     if (!this.imageUrls.length) {
-      this.container.innerHTML = '<div class="photo-wall__empty">暂无可展示图片</div>';
+      const empty = document.createElement("div");
+      empty.className = "photo-wall__empty";
+      empty.textContent = "暂无可展示图片";
+      this.container.replaceChildren(empty);
       return;
     }
 
@@ -37,15 +57,14 @@ class PhotoWall {
       gallery.appendChild(item);
     });
 
-    this.container.innerHTML = "";
-    this.container.appendChild(gallery);
+    this.container.replaceChildren(gallery);
   }
 }
 
 async function loadPhotoWallConfig(configUrl) {
   const response = await fetch(configUrl);
   if (!response.ok) {
-    throw new Error(`配置文件加载失败: ${response.status}`);
+    throw new Error(`配置文件加载失败: ${response.status} ${response.statusText}`);
   }
   return response.json();
 }
