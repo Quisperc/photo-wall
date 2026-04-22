@@ -67,6 +67,4 @@ async function bootstrap() {
   }
 }
 
-bootstrap();
-
-export { PhotoWall, loadPhotoWallConfig };
+export { PhotoWall, loadPhotoWallConfig, bootstrap };

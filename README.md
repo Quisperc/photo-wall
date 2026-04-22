@@ -7,6 +7,7 @@
 - `./index.html`：页面入口
 - `./styles.css`：照片墙样式
 - `./script.js`：可复用组件与配置加载逻辑
+- `./main.js`：页面初始化入口
 - `./photo-wall.config.json`：图片 URL 配置
 
 ## 本地运行
