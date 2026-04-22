@@ -4,10 +4,10 @@
 
 ## 文件说明
 
-- `/home/runner/work/photo-wall/photo-wall/index.html`：页面入口
-- `/home/runner/work/photo-wall/photo-wall/styles.css`：照片墙样式
-- `/home/runner/work/photo-wall/photo-wall/script.js`：可复用组件与配置加载逻辑
-- `/home/runner/work/photo-wall/photo-wall/photo-wall.config.json`：图片 URL 配置
+- `./index.html`：页面入口
+- `./styles.css`：照片墙样式
+- `./script.js`：可复用组件与配置加载逻辑
+- `./photo-wall.config.json`：图片 URL 配置
 
 ## 本地运行
 

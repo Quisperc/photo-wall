@@ -53,6 +53,7 @@ async function loadPhotoWallConfig(configUrl) {
 async function bootstrap() {
   const root = document.getElementById("photo-wall-root");
   if (!root) {
+    console.warn("PhotoWall: 未找到 #photo-wall-root 容器");
     return;
   }
   const photoWall = new PhotoWall({ container: root });
