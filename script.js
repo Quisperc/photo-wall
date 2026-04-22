@@ -4,7 +4,8 @@ class PhotoWall {
       throw new Error("PhotoWall: container 必须是一个有效的 DOM 元素");
     }
     this.container = container;
-    this.imageUrls = imageUrls;
+    this.imageUrls = [];
+    this.setImages(imageUrls);
   }
 
   setImages(imageUrls = []) {
@@ -66,7 +67,11 @@ async function loadPhotoWallConfig(configUrl) {
   if (!response.ok) {
     throw new Error(`配置文件加载失败: ${response.status} ${response.statusText}`);
   }
-  return response.json();
+  try {
+    return await response.json();
+  } catch {
+    throw new Error("配置文件不是合法的 JSON");
+  }
 }
 
 async function bootstrap() {
