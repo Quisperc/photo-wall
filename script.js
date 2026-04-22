@@ -1,9 +1,10 @@
 class PhotoWall {
-  constructor({ container, imageUrls = [] }) {
+  constructor({ container, imageUrls = [], emptyMessage = "暂无可展示图片" }) {
     if (!(container instanceof HTMLElement)) {
       throw new Error("PhotoWall: container 必须是一个有效的 DOM 元素");
     }
     this.container = container;
+    this.emptyMessage = emptyMessage;
     this.imageUrls = [];
     this.setImages(imageUrls);
   }
@@ -36,7 +37,7 @@ class PhotoWall {
     if (!this.imageUrls.length) {
       const empty = document.createElement("div");
       empty.className = "photo-wall__empty";
-      empty.textContent = "暂无可展示图片";
+      empty.textContent = this.emptyMessage;
       this.container.replaceChildren(empty);
       return;
     }
@@ -84,6 +85,9 @@ async function bootstrap() {
 
   try {
     const config = await loadPhotoWallConfig("./photo-wall.config.json");
+    if (!Array.isArray(config.imageUrls)) {
+      throw new Error('配置文件缺少 "imageUrls" 数组');
+    }
     photoWall.setImages(config.imageUrls);
   } catch (error) {
     photoWall.setImages([]);
