@@ -1,0 +1,11 @@
+import{c as o,r as l,j as e,a as x}from"./index-Drvb-kaT.js";/**
+ * @license lucide-react v0.441.0 - ISC
+ *
+ * This source code is licensed under the ISC license.
+ * See the LICENSE file in the root directory of this source tree.
+ */const p=o("Link",[["path",{d:"M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71",key:"1cjeqo"}],["path",{d:"M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71",key:"19qd67"}]]);/**
+ * @license lucide-react v0.441.0 - ISC
+ *
+ * This source code is licensed under the ISC license.
+ * See the LICENSE file in the root directory of this source tree.
+ */const j=o("Plus",[["path",{d:"M5 12h14",key:"1ays0h"}],["path",{d:"M12 5v14",key:"s699le"}]]),b=({onAddSuccess:m})=>{const[s,n]=l.useState(""),[a,d]=l.useState(!1),[c,r]=l.useState(null),u=async t=>{if(t.preventDefault(),!s.trim()){r("请输入图片URL");return}if(!h(s)){r("请输入有效的URL地址");return}d(!0),r(null);try{await x(s),n(""),m()}catch(i){r(i instanceof Error?i.message:"添加失败")}finally{d(!1)}},h=t=>{try{return new URL(t),!0}catch{return!1}};return e.jsxs("div",{className:"glass-card p-6",children:[e.jsxs("div",{className:"flex items-center gap-3 mb-6",children:[e.jsx("div",{className:"w-10 h-10 rounded-xl bg-secondary/20 flex items-center justify-center",children:e.jsx(p,{className:"w-5 h-5 text-secondary"})}),e.jsxs("div",{children:[e.jsx("h3",{className:"text-lg font-heading font-semibold",children:"通过 URL 添加"}),e.jsx("p",{className:"text-sm text-text/60",children:"从网络链接导入图片"})]})]}),e.jsxs("form",{onSubmit:u,className:"space-y-4",children:[e.jsx("div",{children:e.jsx("input",{type:"url",value:s,onChange:t=>n(t.target.value),placeholder:"https://example.com/image.jpg",className:"w-full",disabled:a})}),e.jsx("button",{type:"submit",disabled:a||!s.trim(),className:"btn-primary w-full flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed",children:a?e.jsxs(e.Fragment,{children:[e.jsx("div",{className:"w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin"}),"添加中..."]}):e.jsxs(e.Fragment,{children:[e.jsx(j,{className:"w-5 h-5"}),"添加图片"]})})]}),c&&e.jsx("div",{className:"mt-4 p-4 rounded-xl bg-red-500/10 border border-red-500/20 text-red-400 text-center",children:c})]})};export{b as default};
